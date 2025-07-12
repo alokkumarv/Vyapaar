@@ -80,3 +80,59 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
+
+
+
+
+-- Table: shopkeepers (Primary table)
+CREATE TABLE shopkeepers (
+    id SERIAL PRIMARY KEY,
+    full_name TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table: shop_info (One-to-one with shopkeepers)
+CREATE TABLE shop_info (
+    id SERIAL PRIMARY KEY,
+    shopkeeper_id INTEGER UNIQUE REFERENCES shopkeepers(id) ON DELETE CASCADE,
+    shop_name TEXT NOT NULL,
+    shop_category TEXT NOT NULL,
+    shop_address TEXT NOT NULL,
+    city TEXT NOT NULL,
+    state TEXT NOT NULL,
+    pincode TEXT NOT NULL,
+    opening_time TIME,
+    closing_time TIME,
+    license_number TEXT
+);
+
+-- Table: payment_info (Optional, one-to-one)
+CREATE TABLE payment_info (
+    id SERIAL PRIMARY KEY,
+    shopkeeper_id INTEGER UNIQUE REFERENCES shopkeepers(id) ON DELETE CASCADE,
+    account_holder TEXT,
+    account_number TEXT,
+    ifsc_code TEXT,
+    upi_id TEXT
+);
+
+-- Table: document_info (Optional, one-to-one)
+CREATE TABLE document_info (
+    id SERIAL PRIMARY KEY,
+    shopkeeper_id INTEGER UNIQUE REFERENCES shopkeepers(id) ON DELETE CASCADE,
+    shop_photo_url TEXT,
+    owner_id_proof_url TEXT,
+    registration_cert_url TEXT
+);
+
+-- Table: location_info (Optional, one-to-one)
+CREATE TABLE location_info (
+    id SERIAL PRIMARY KEY,
+    shopkeeper_id INTEGER UNIQUE REFERENCES shopkeepers(id) ON DELETE CASCADE,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION
+);
