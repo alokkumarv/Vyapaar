@@ -1,0 +1,37 @@
+// Sjopkeeper registration json
+
+{
+  "personal_info": {
+    "full_name": "Ramesh Kumar",
+    "phone": "+919999888877",
+    "email": "ramesh.kumar@example.com",
+    "password": "securePass123",
+    "confirm_password": "securePass123"
+  },
+  "shop_info": {
+    "shop_name": "Ramesh Electronics",
+    "shop_category": "Electronics",
+    "shop_address": "12B, MG Road",
+    "city": "Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "opening_time": "09:00",
+    "closing_time": "21:00",
+    "license_number": "DL-ELX-98765"
+  },
+  "payment_info": {
+    "account_holder": "Ramesh Kumar",
+    "account_number": "123456789012",
+    "ifsc_code": "SBIN0001234",
+    "upi_id": "rameshkumar@upi"
+  },
+  "document_info": {
+    "shop_photo_url": "https://example.com/uploads/shop.jpg",
+    "owner_id_proof_url": "https://example.com/uploads/aadhar.jpg",
+    "registration_cert_url": "https://example.com/uploads/reg_cert.pdf"
+  },
+  "location_info": {
+    "latitude": 28.6139,
+    "longitude": 77.2090
+  }
+}
